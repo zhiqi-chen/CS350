@@ -1,0 +1,22 @@
+// a Server class should be used to enqueue and process arriving requests following a given policy—FIFO or Shortest Job Next (SJN)
+import java.util.*;
+
+public class Server_FIFO {
+
+    PriorityQueue<Request_FIFO> requests = new PriorityQueue<Request_FIFO>();
+
+    void receiveRequest(Request_FIFO rqtToReceive) {
+        requests.add(rqtToReceive);
+    }
+
+    Request_FIFO removeRequest() {
+        return requests.poll();
+    }
+    
+    int getSize() {
+        return requests.size();
+    }
+
+    // under the FIFO policy, the order of service is the same as the order of arrival
+    // under the SJN policy, if two or more requests are queued, the one with the shortest service time is picked for execution.
+}
